@@ -5,6 +5,15 @@ import settings
 import random
 import string
 
+from falcon_cors import CORS
+
+
+cors_allow_all = CORS(allow_all_origins=True,
+                      allow_all_headers=True,
+                      allow_all_methods=True)
+
+api = falcon.API(middleware=[cors_allow_all.middleware])
+
 
 def random_string(str_length=8):
     letters_and_digits = string.ascii_letters + string.digits
@@ -29,6 +38,8 @@ def save_json(body):
 
 
 class JSONResource:
+
+    cors = cors_allow_all
 
     def on_get(self, req, resp, json_id):
         """Handles GET request to get a specific JSON"""
@@ -55,9 +66,7 @@ class JSONResource:
         resp.media = json_res
 
 
-api = falcon.API(cors_enable=False)
 api.add_route('/api/bins/{json_id}', JSONResource())
-
 
 if settings.DEBUG == True:
     from wsgiref import simple_server
