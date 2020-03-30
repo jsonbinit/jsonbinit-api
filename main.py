@@ -48,7 +48,7 @@ class JSONResource:
         json_id = save_json(req.media)
 
         json_res = {
-            'bin': '/bins/' + json_id
+            'bin': json_id
         }
 
         resp.status = falcon.HTTP_201
