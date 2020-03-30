@@ -6,4 +6,4 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-CMD gunicorn main:api
+CMD gunicorn main:api -c gunicorn_settings.py
