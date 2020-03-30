@@ -5,10 +5,6 @@ import settings
 import random
 import string
 
-from falcon_cors import CORS
-
-cors = CORS(allow_all_origins=True)
-
 
 def random_string(str_length=8):
     letters_and_digits = string.ascii_letters + string.digits
@@ -59,7 +55,7 @@ class JSONResource:
         resp.media = json_res
 
 
-api = falcon.API(middleware=[cors.middleware])
+api = falcon.API(cors_enable=False)
 api.add_route('/api/bins/{json_id}', JSONResource())
 
 
