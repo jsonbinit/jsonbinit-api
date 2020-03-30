@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+  redis:
+    image: library/redis:latest
+    restart: unless-stopped
+    volumes:
+      - ./redisdata:/data
+
+  web:
+    environment:
+      - DEBUG=0
+      - DB_HOST=redis
+    ports:
+      - "8000:8000"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - redis
+
