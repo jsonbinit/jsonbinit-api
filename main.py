@@ -7,7 +7,7 @@ import string
 
 from falcon_cors import CORS
 
-public_cors = CORS(allow_all_origins=True)
+cors = CORS(allow_all_origins=True)
 
 
 def random_string(str_length=8):
@@ -34,8 +34,6 @@ def save_json(body):
 
 class JSONResource:
 
-    cors = public_cors
-
     def on_get(self, req, resp, json_id):
         """Handles GET request to get a specific JSON"""
         json_get = get_json(json_id)
@@ -61,7 +59,7 @@ class JSONResource:
         resp.media = json_res
 
 
-api = falcon.API(middleware=[public_cors.middleware])
+api = falcon.API(middleware=[cors.middleware])
 api.add_route('/api/bins/{json_id}', JSONResource())
 
 
