@@ -4,9 +4,10 @@
 [![Build Status](https://travis-ci.org/jsonbinit/jsonbinit-api.svg?branch=master)](https://travis-ci.org/jsonbinit/jsonbinit-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/jsonbinit/jsonbinit-api/blob/master/LICENSE)
 
-## Run in dev mode
+## Run locally
 
 ```sh
+pip install -r requirements.txt
 cd app
 python main.py
 ```
@@ -14,5 +15,6 @@ python main.py
 ## Run tests
 
 ```sh
+pip install -r requirements-dev.txt
 pytest app/test.py --cov main -s --cov-report term-missing
 ```
