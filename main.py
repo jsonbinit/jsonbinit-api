@@ -52,23 +52,22 @@ class JSONResource:
 
     def on_post(self, req, resp, json_id=None):
         """Handles POST request to save a JSON"""
-
         if json_id:
             resp.status = falcon.HTTP_404
-
-        json_id = save_json(req.media)
-
-        json_res = {
-            'bin': json_id
-        }
-
-        resp.status = falcon.HTTP_201
-        resp.media = json_res
+        else:
+            json_id = save_json(req.media)
+            json_res = {
+                'bin': json_id
+            }
+            resp.status = falcon.HTTP_201
+            resp.media = json_res
 
 
-api.add_route('/api/bins/{json_id}', JSONResource())
+api.add_route('/bins/{json_id}', JSONResource())
 
 if settings.DEBUG == True:
-    from wsgiref import simple_server
-    httpd = simple_server.make_server('127.0.0.1', 8000, api)
-    httpd.serve_forever()
+    def main(): # pragma: no cover
+        from wsgiref import simple_server
+        httpd = simple_server.make_server('127.0.0.1', 8000, api)
+        httpd.serve_forever()
+    main() # pragma: no cover

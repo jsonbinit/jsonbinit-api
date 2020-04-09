@@ -1,0 +1,7 @@
+-r requirements.txt
+pytest
+codecov==2.0.9
+coverage==4.5.2
+flake8==3.7.9
+pytest-mock
+pytest-cov>=2.6.0

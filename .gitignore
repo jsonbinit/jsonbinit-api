@@ -1,2 +1,4 @@
 *.pyc
 redisdata/
+k8s/
+.coverage
