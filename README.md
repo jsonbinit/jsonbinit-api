@@ -1,4 +1,4 @@
-# JSON {BIN} IT API
+# JSON {🗑} IT API
 
 [![codecov](https://codecov.io/gh/jsonbinit/jsonbinit-api/branch/master/graph/badge.svg)](https://codecov.io/gh/jsonbinit/jsonbinit-api)
 [![Build Status](https://travis-ci.org/jsonbinit/jsonbinit-api.svg?branch=master)](https://travis-ci.org/jsonbinit/jsonbinit-api)
@@ -6,7 +6,7 @@
 
 ## Run in dev mode
 
-```
+```sh
 cd app
 python main.py
 ```
