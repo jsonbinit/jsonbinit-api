@@ -50,3 +50,26 @@ def test_store_json(client, mocker):
     assert len(result.json['bin']) == 8
     result = client.simulate_get('/bins/' + result.json['bin'])
     assert result.json['value'] == 3
+
+
+def test_store_json_with_collision(client, mocker):
+    mocker.patch.object(main.settings, 'DB')
+    main.settings.DB = MockDB()
+    mocker.patch('main.random_string')
+    main.random_string.side_effect = ['ABCdEfgh', 'ABCdEfgh', 'bazyBazy']
+    result = client.simulate_post(
+        '/bins/',
+        body=json.dumps({'value' : 3}),
+        headers={'Content-type' : 'application/json'}
+    )
+    assert len(result.json['bin']) == 8
+    result = client.simulate_get('/bins/' + result.json['bin'])
+    assert result.json['value'] == 3
+    result = client.simulate_post(
+        '/bins/',
+        body=json.dumps({'value' : 3}),
+        headers={'Content-type' : 'application/json'}
+    )
+    assert len(result.json['bin']) == 8
+    result = client.simulate_get('/bins/' + result.json['bin'])
+    assert result.json['value'] == 3
