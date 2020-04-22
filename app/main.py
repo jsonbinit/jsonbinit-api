@@ -5,6 +5,7 @@ import settings
 import random
 import string
 
+from datetime import timedelta
 from falcon_cors import CORS
 
 
@@ -52,6 +53,21 @@ class JSONResource:
 
     def on_post(self, req, resp, json_id=None):
         """Handles POST request to save a JSON"""
+        key = req.remote_addr
+        bucket_val = settings.DB.get(key)
+        if bucket_val is None:
+            bucket_val = settings.LIMIT
+            settings.DB.setex(
+                key, int(timedelta(hours=1).total_seconds()), settings.LIMIT
+            )
+        if int(bucket_val) > 0:
+            settings.DB.decr(key, 1)
+        else:
+            resp.status = falcon.HTTP_429
+            resp.media = {
+                'message': 'Too many requests!'
+            }
+            return
         if json_id:
             resp.status = falcon.HTTP_404
         else:

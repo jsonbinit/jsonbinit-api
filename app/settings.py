@@ -8,3 +8,4 @@ DB = redis.Redis(
     port=os.environ.get('DB_PORT', 6379),
     db=os.environ.get('DB_NUMBER', 0)
 )
+LIMIT = os.environ.get('REQHOUR_LIMIT', 200)
