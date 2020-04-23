@@ -7,6 +7,7 @@ python:
 
 install:
   - pip install -r requirements-dev.txt
+  - pip install --upgrade 'sentry-sdk[falcon]==0.10.2'
 
 script:
   - pytest app/test.py --cov main -s --cov-report term-missing

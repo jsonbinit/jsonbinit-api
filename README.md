@@ -4,12 +4,18 @@
 [![Build Status](https://travis-ci.org/jsonbinit/jsonbinit-api.svg?branch=master)](https://travis-ci.org/jsonbinit/jsonbinit-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/jsonbinit/jsonbinit-api/blob/master/LICENSE)
 
-## Run locally
+## Run locally for development
 
 ```sh
 pip install -r requirements.txt
 cd app
 python main.py
+```
+
+## Run with Docker Compose
+
+```sh
+docker-compose up
 ```
 
 ## Run tests

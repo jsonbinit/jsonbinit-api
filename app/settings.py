@@ -9,3 +9,4 @@ DB = redis.Redis(
     db=os.environ.get('DB_NUMBER', 0)
 )
 LIMIT = os.environ.get('REQHOUR_LIMIT', 200)
+SENTRY_DSN = os.environ.get('SENTRY_DSN', None)
