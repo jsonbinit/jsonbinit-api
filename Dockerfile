@@ -8,4 +8,6 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
+RUN pip install --upgrade 'sentry-sdk[falcon]==0.10.2'
+
 CMD gunicorn main:api -c gunicorn_settings.py

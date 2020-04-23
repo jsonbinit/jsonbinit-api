@@ -9,6 +9,15 @@ from datetime import timedelta
 from falcon_cors import CORS
 
 
+if settings.SENTRY_DSN: # pragma: no cover
+    import sentry_sdk
+    from sentry_sdk.integrations.falcon import FalconIntegration
+
+    sentry_sdk.init(
+        dsn=settings.SENTRY_DSN,
+        integrations=[FalconIntegration()]
+    )
+
 cors_allow_all = CORS(allow_all_origins=True,
                       allow_all_headers=True,
                       allow_all_methods=True)
@@ -81,9 +90,9 @@ class JSONResource:
 
 api.add_route('/bins/{json_id}', JSONResource())
 
-if settings.DEBUG == True:
-    def main(): # pragma: no cover
+if settings.DEBUG == True: # pragma: no cover
+    def main():
         from wsgiref import simple_server
         httpd = simple_server.make_server('127.0.0.1', 8000, api)
         httpd.serve_forever()
-    main() # pragma: no cover
+    main()
