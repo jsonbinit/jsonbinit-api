@@ -71,7 +71,7 @@ def test_store_json(client, mocker):
 def test_stress_store_json(client, mocker):
     mocker.patch.object(main.settings, 'DB')
     main.settings.DB = MockDB()
-    for i in range(200):
+    for i in range(main.settings.LIMIT):
         result = client.simulate_post(
             '/bins/',
             body=json.dumps({'value' : 3}),
