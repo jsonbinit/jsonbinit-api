@@ -4,6 +4,19 @@
 [![Build Status](https://travis-ci.org/jsonbinit/jsonbinit-api.svg?branch=master)](https://travis-ci.org/jsonbinit/jsonbinit-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/jsonbinit/jsonbinit-api/blob/master/LICENSE)
 
+## Environment configuration
+
+### Application settings
+
+`SENTRY_DSN`: Sentry DSN to collect exeptions in [Sentry](https://sentry.io/)
+`REQHOUR_LIMIT`: Maximum number of POST requests per hour allowed
+
+### Redis settings
+
+`DB_HOST`: Redis Host
+`DB_PORT`: Redis Port number
+`DB_NUMBER`: Redis database
+
 ## Run locally for development
 
 ```sh
