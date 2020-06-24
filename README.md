@@ -8,14 +8,14 @@
 
 ### Application settings
 
-`SENTRY_DSN`: Sentry DSN to collect exeptions in [Sentry](https://sentry.io/)
-`REQHOUR_LIMIT`: Maximum number of POST requests per hour allowed
+- `SENTRY_DSN`: Sentry DSN to collect exeptions in [Sentry](https://sentry.io/)
+- `REQHOUR_LIMIT`: Maximum number of POST requests per hour allowed
 
 ### Redis settings
 
-`DB_HOST`: Redis Host
-`DB_PORT`: Redis Port number
-`DB_NUMBER`: Redis database
+- `DB_HOST`: Redis Host
+- `DB_PORT`: Redis Port number
+- `DB_NUMBER`: Redis database
 
 ## Run locally for development
 
