@@ -25,6 +25,12 @@ class MockDB:
             self.set(key, None)
         return self._data.get(key, None)
 
+    def incr(self, key, amount):
+        value = self.get(key)
+        value = value + amount
+        self.set(key, value)
+        return value
+
     def decr(self, key, amount):
         value = self.get(key)
         value = value - amount
